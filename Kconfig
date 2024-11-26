@@ -1,0 +1,31 @@
+menu "Zephyr Kernel"
+	source "Kconfig.zephyr"
+endmenu
+
+menu "TRAVEL Tracker"
+
+config BT_NUS_THREAD_STACK_SIZE
+	int "Thread stack size"
+	default 1024
+	help
+	  Stack size used in each of the two threads
+
+config BT_NUS_UART_BUFFER_SIZE
+	int "UART payload buffer element size"
+	default 40
+	help
+	  Size of the payload buffer in each RX and TX FIFO element
+
+config BT_NUS_UART_RX_WAIT_TIME
+	int "Timeout for UART RX complete event"
+	default 50000
+	help
+	  Wait for RX complete event time in microseconds
+
+	rsource "src/m_ble/Kconfig.ble"
+	rsource "src/m_event/Kconfig.event_queue"
+endmenu
+
+module = APPLICATION
+module-str = App
+source "subsys/logging/Kconfig.template.log_config"

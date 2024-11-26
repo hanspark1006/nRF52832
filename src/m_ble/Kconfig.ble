@@ -1,0 +1,3 @@
+module = BLE_MODULE
+module-str = Ble module
+source "subsys/logging/Kconfig.template.log_config"
